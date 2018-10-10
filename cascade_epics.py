@@ -75,10 +75,10 @@ class DummyProxy:
     def Clear(self):
         print "Clear"
  
-    def State(self):
+    def state(self):
         return random.randint(0,2)
 
-    def Status(self):
+    def status(self):
         return self.states[random.randint(0,2)]
 
 class myDriver(Driver):
@@ -126,7 +126,7 @@ class myDriver(Driver):
 
     def doWork(self):
         while True:
-            tango_state = self.proxy.State()
+            tango_state = self.proxy.state()
             epics_state = 2
             if tango_state == DEVSTATE_ON: # PyTango.DevState.ON
                 epics_state = 0 # Idle
@@ -135,7 +135,7 @@ class myDriver(Driver):
             elif tango_state == DEVSTATE_FAULT: # PyTango.DevState.FAULT
                 epics_state = 2 # Fault
             self.setParam('STATE', epics_state)
-            self.setParam('STATESTR', self.proxy.Status())
+            self.setParam('STATESTR', self.proxy.status())
             self.setParam('PRESELECTION', self.proxy.preselection)
             self.setParam('BINX', self.proxy.binning[0])
             self.setParam('BINY', self.proxy.binning[1])
