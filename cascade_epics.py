@@ -67,13 +67,13 @@ class DummyProxy:
         self.states = ['ON','MOVING','FAULT']
         
     def Start(self):
-        print "Start"
+        print("Start")
 
     def Stop(self):
-        print "Stop"
+        print("Stop")
 
     def Clear(self):
-        print "Clear"
+        print("Clear")
  
     def state(self):
         return random.randint(0,2)
@@ -142,12 +142,12 @@ class myDriver(Driver):
             self.setParam('TIMECHANS', self.proxy.timeChannels)
             self.setParam('FILENAME', self.filename)
             if self.saveData:
-                print "Saving data to {}".format(self.filename)
+                print("Saving data to {}".format(self.filename))
                 try:  
                     self.proxy.value.astype('<u4').tofile(self.filename)
                 except:
                     print("Unexpected error saving to file: {}".format(sys.exc_info()[0]))
-                print "Save complete"
+                print("Save complete")
                 # as a save may take a while, we have set the pv as asyn above so need to 
                 # signal done to allow completion callbacks to be used
                 self.callbackPV('SAVEDATA:SP') 
