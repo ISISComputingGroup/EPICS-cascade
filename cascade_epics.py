@@ -1,11 +1,11 @@
-import threading
-import numpy
-import time
-import random
 import os
+import random
 import sys
+import threading
+import time
+
 import numpy
-from pcaspy import Driver, SimpleServer, Severity
+from pcaspy import Driver, SimpleServer
 
 ## set TESTING = False if PyTango is installed and PyTango.DeviceProxy below is correct
 ## PyTango is available from pip on Linux, but should already be installed on Cascade computer
